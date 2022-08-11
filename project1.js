@@ -44,3 +44,16 @@ for(var i=0;i<item.length;i++){
     item[i].style.fontWeight="bold"
 }
 
+var lis=document.getElementsByClassName("new-list")
+       lis[0].innerText="hello"
+       lis[0].style.fontWeight="bold"
+       lis[0].style.listStyle='none';
+       lis[0].style.backgroundColor="yellow"
+
+       var li=document.getElementsByTagName("li")   
+       li[4].style.color="green"
+       
+
+      console.log(lis)
+      
+
