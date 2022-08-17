@@ -52,3 +52,63 @@ for(var i=0;i<localStorage.length-1;i++){
     console.log(change_obj.name)
 }
 
+
+
+window.addEventListener("DOMContentLoaded", getvalue)
+
+function getvalue(){
+
+    var local_Storage=localStorage
+    //get keys
+    var storage_key=Object.keys(local_Storage)
+    //travers through arrey of keys
+    for(var i=0;i<storage_key.length;i++){
+          var key=storage_key[i];
+           str_object=local_Storage[key]
+           my_value=JSON.parse(str_object)
+           //call the onscreen function
+           onscreenview(my_value)
+       
+    }
+}
+//
+function onscreenview(my_value){
+    var parrentnode=document.getElementById('add')
+    //added new list with delete button and edit with function
+    var child=`<li id="${my_value.email_id}">${my_value.name}-${my_value.email_id}
+    
+    <button onclick=deleteuser("${my_value.email_id}") style="color:red;">Delete User</button>
+
+    <button onclick=edituser("${my_value.name}","${my_value.email_id}") style="background-color:lightblue;">Edit</button>
+    </li>`
+    //every time adding exist parent with li + new child
+    parrentnode.innerHTML=parrentnode.innerHTML+child
+}
+
+
+//local storage delete
+function deleteuser(email){
+
+ localStorage.removeItem(email)
+ onscreendelete(email)
+}
+//on screedelete
+function onscreendelete(email){
+    
+    var parrentnode=document.getElementById('add')
+    var child=document.getElementById(email)
+    parrentnode.removeChild(child)
+}
+
+function edituser(name,email){
+    var username=document.getElementById("username")
+    var mailid=document.getElementById("email")
+    username.value=name
+    mailid.value=email
+    //remove our local storage
+
+    localStorage.removeItem(email)
+    
+    // when i will submit it will create new object in our locl memory
+    
+}
