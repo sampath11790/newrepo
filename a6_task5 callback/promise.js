@@ -99,6 +99,23 @@ mydelete().then(()=>{
     console.log(...posts)
 }).catch(err=>console.log(err))
 
+// async / await
+
+async function init(){
+   await createpost({title:"post 11",body:"this is post 11"})
+   getpost()
+
+}
+init()
+
+// async / await with fetch
+async function fetchdata(){
+    const res=await fetch('https://jsonplaceholder.typicode.com/users')
+
+    const data=await res.json()
+    console.log(data)
+}
+fetchdata()
 // mydelete().then(console.log).catch(err=>console.log(err))
 // mydelete().then(console.log).catch(err=>console.log(err))
 // mydelete().then(console.log).catch(err=>console.log(err))
@@ -119,7 +136,13 @@ const promise2=10;
 const promise3=new Promise((resolve,reject)=>{
     setTimeout(resolve,2000,"good bye")
 })
+const promise4= fetch('https://jsonplaceholder.typicode.com/users').then((res)=>{
+   return res.json()
+})
 
-Promise.all([promise1,promise2,promise3]).then(function (value){
+Promise.all([promise1,promise2,promise3,promise4]).then(function (value){
     console.log(value)
 }).catch(console.log)
+
+
+
