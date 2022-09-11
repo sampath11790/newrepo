@@ -76,7 +76,16 @@ find(node, data)
     }
  
 }
-
+traversal(node)
+{
+    if(node !== null)
+    {
+        //it will give ascending order
+        this.traversal(node.left);
+        console.log(node.data);
+        this.traversal(node.right);
+    }
+}
 
 
 }
@@ -92,3 +101,4 @@ BST.insert(22);
 BST.insert(28);
 console.log(BST.root)
 console.log(BST.find(BST.root,100))
+BST.traversal(BST.root)
