@@ -79,7 +79,7 @@ function edituser(uid,uname,uemail,uphone){
     }
 
 function showscreen(e){
-    e.preventDefault()
+    //e.preventDefault()
   // console.log(e)
     const username=e.username
     const email=e.email
