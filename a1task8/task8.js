@@ -7,16 +7,25 @@ form.addEventListener('submit', additem)
 itemlist.addEventListener('click',removeitem)
 //filter event
 filter.addEventListener('keyup',filteritem)
+
+
+
 //add discription box before submit
 var discription=document.createElement('input')
     discription.type="text"
     discription.id="dis"
     discription.className="form-control mr-2"
     discription.placeholder="Enter discription"
+//var inputnode=document.getElementById("item")// 1st input
+var buttonnode=document.getElementById("btn")// submit button
+var paren=buttonnode.parentNode
+   paren.insertBefore(discription,buttonnode)
+//console.log(inputnode)
+//inputnode.insertBefore(discription,buttonnode)
 
-var buttonnode=document.getElementById("btn")// holding button
-var parent=buttonnode.parentNode  //holding button node parrent
-   parennt.insertBefore(discription,buttonnode)
+
+
+
 
 function additem(e){
     e.preventDefault()
@@ -59,7 +68,7 @@ function additem(e){
    //create button element
     var deletbtn=document.createElement('button')
     deletbtn.className="btn btn-danger btn-sm float-right delete"
-  
+   // deletbtn.id="hi"
 
 
     
@@ -106,7 +115,7 @@ function removeitem(e){
 //filter item;
 
 function filteritem(e){
-  
+   // console.log("hi")
     e.preventDefault()
 
 
@@ -115,18 +124,20 @@ var text=e.target.value.toLowerCase()
 
 var items=document.getElementsByTagName('li')
 
+//console.log(items[0].lastChild.textContent)
 var arraylist=Array.from(items)
-
+//console.log(arraylist)
 //convert to an array
 arraylist.forEach(myfunction)
+//console.log(items.firstChild.textContent)
 function myfunction(item)  {
-    var itemname=item.textContent
- 
+    var itemname=item.firstChild.textContent
+ //console.log(itemname.firstChild)
     if(itemname.toLowerCase().includes(text)==true){
         item.style.display='block'
     }else{
         item.style.display='none'
-        
+        console.log("hi")
     }
 }
 }
